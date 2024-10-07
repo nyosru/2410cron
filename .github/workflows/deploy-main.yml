@@ -4,6 +4,7 @@ name: Deploy bu docker
 env:
   VPS_IP: 91.218.230.97
   VPS_USERNAME: root
+  DIR_DOCKER: /home/docker
   DIR: /home/2410cron
   GIT_BRANCH: origin/main
 
@@ -58,9 +59,10 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY_DOCKER24 }}
 
           script: |
-            cd ${{ env.DIR }}
+            cd ${{ env.DIR_DOCKER }}
+            docker restart cron
+            # cd ${{ env.DIR }}
             # make prod
-            docker restart cron-service
 
   sms_start:
     runs-on: ubuntu-latest
