@@ -5,7 +5,7 @@ FROM debian:latest
 RUN apt-get update && apt-get install -y cron curl procps wget iputils-ping
 
 # Копируем crontab файл и добавляем его в cron-таблицу
-COPY ./../2410cron/my-crontab /etc/cron.d/my-crontab
+COPY my-crontab /etc/cron.d/my-crontab
 
 # Даем права на выполнение crontab файла
 RUN chmod 0644 /etc/cron.d/my-crontab
