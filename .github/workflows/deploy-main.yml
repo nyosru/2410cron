@@ -60,6 +60,8 @@ jobs:
 
           script: |
             cd ${{ env.DIR_DOCKER }}
+            docker-compose stop cron
+            docker-compose rm -f cron            
             docker-compose up -d --build cron
             # docker restart cron
             # docker exec cron service cron reload
